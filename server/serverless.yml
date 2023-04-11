@@ -1,0 +1,49 @@
+service: bookshelf-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: ap-northeast-1
+  environment:
+    API_BASE_URL: { 'Fn::Join': [
+      '', [
+        'https://',
+        {'Ref': 'ApiGatewayRestApi' },
+        '.execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}'
+      ]
+    ]}
+
+plugins:
+  - serverless-esbuild
+
+package:
+  individually: true
+  patterns:
+    - '!**'
+    - '**'
+    - 'node_modules/**'
+
+functions:
+  Api:
+    handler: functions/handler.server
+    events:
+      - http: ANY api/{proxy+}
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+
+
+resources:
+  Outputs:
+    apiBaseUrl:
+      Value: { 'Fn::Join': [
+        '', [
+          'https://',
+          {'Ref': 'ApiGatewayRestApi' },
+          '.execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}'
+        ]
+      ]}

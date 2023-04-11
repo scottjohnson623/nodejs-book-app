@@ -1,0 +1,7 @@
+services:
+  server:
+    path: server
+  client:
+    path: client
+    params: 
+      apiBaseUrl: ${server.apiBaseUrl}

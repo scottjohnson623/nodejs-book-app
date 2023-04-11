@@ -10,7 +10,7 @@ Resources:
   StaticResourceBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nuxt-static-assets
+      BucketName: bookshelf-nuxt
       AccessControl: Private
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
@@ -21,7 +21,7 @@ Resources:
     Type: AWS::CloudFront::OriginAccessControl
     Properties:
       OriginAccessControlConfig:
-        Name: "nuxt3-sample-oac"
+        Name: "bookshelf-oac"
         OriginAccessControlOriginType: s3
         SigningBehavior: always
         SigningProtocol: sigv4
@@ -49,7 +49,7 @@ Resources:
         HttpVersion: http2
         CacheBehaviors:
           - PathPattern: "/_nuxt/*"
-            TargetOriginId: "nuxt-static-assets"
+            TargetOriginId: "bookshelf-static-assets"
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
         DefaultCacheBehavior:
@@ -57,7 +57,7 @@ Resources:
           CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
           ViewerProtocolPolicy: redirect-to-https
         Origins:
-          - Id: "nuxt-static-assets"
+          - Id: "bookshelf-static-assets"
             DomainName: !GetAtt StaticResourceBucket.RegionalDomainName
             OriginAccessControlId: !GetAtt StaticResourceOriginAccessControl.Id
             S3OriginConfig: {}
