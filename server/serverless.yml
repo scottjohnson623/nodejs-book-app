@@ -30,7 +30,7 @@ package:
 
 functions:
   Api:
-    handler: functions/handler.server
+    handler: server.handler
     events:
       - http: ANY api/{proxy+}
 
