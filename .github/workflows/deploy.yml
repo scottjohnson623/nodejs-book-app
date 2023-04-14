@@ -1,13 +1,13 @@
 name: Deploy to Serverless
 
-on: workflow_dispatch
+on: [workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
-    matrix:
-        node-version: [16.x]
+      matrix:
+          node-version: [16.x]
 
     steps:
     - name: Checkout
@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
+    - name: Install NPM Packages
       run: npm ci
 
     - name: Install Serverless Framework
@@ -25,11 +27,11 @@ jobs:
     - name: Serverless Authentication
       run: sls config credentials --provider aws --key ${{secrets.AWS_ACCESS_KEY_ID}} --secret ${{secrets.AWS_SECRET_ACCESS_KEY}}
     
-    - name: Build Server
+    - name: Build Server Package
       run: cd server && npm ci
     
-    - name: Build Client
+    - name: Build Client Package
       run: cd client && npm ci && npm run build
 
-    - name: Deploy to AWS
+    - name: Deploy to Serverless
       run: serverless deploy --verbose
