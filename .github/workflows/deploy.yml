@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install npm packages
+    - name: Install NPM Packages
       run: npm ci
 
     - name: Install Serverless Framework
@@ -27,11 +27,11 @@ jobs:
     - name: Serverless Authentication
       run: sls config credentials --provider aws --key ${{secrets.AWS_ACCESS_KEY_ID}} --secret ${{secrets.AWS_SECRET_ACCESS_KEY}}
     
-    - name: Build Server
+    - name: Build Server Package
       run: cd server && npm ci
     
-    - name: Build Client
+    - name: Build Client Package
       run: cd client && npm ci && npm run build
 
-    - name: Deploy to AWS
+    - name: Deploy to Serverless
       run: serverless deploy --verbose
