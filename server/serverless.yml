@@ -7,7 +7,7 @@ provider:
   stage: dev
   region: ap-northeast-1
   environment:
-    booksTableName: 
+    booksTableName:
       Ref: booksTable
   iam:
     role:
@@ -25,9 +25,9 @@ plugins:
 package:
   individually: true
   patterns:
-    - '!**'
-    - '**'
-    - '!node_modules/**'
+    - "!**"
+    - "**"
+    - "!node_modules/**"
   excludeDevDependencies: true
 
 functions:
@@ -43,9 +43,9 @@ custom:
   dynamodb:
     stages:
       - dev
-    
+
 resources:
-  Resources: 
+  Resources:
     booksTable:
       Type: AWS::DynamoDB::Table
       Properties:

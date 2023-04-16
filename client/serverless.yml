@@ -11,8 +11,8 @@ provider:
 
 package:
   patterns:
-    - '!**'
-    - '.output/**'
+    - "!**"
+    - ".output/**"
   excludeDevDependencies: true
 
 functions:
@@ -30,7 +30,7 @@ custom:
       deleteRemoved: true
   scripts:
     hooks:
-      'before:deploy:deploy': npm run build
+      "before:deploy:deploy": npm run build
 
 resources:
   Resources:
