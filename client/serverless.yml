@@ -13,6 +13,7 @@ package:
   patterns:
     - "!**"
     - ".output/**"
+  excludeDevDependencies: true
 
 functions:
   NuxtSsrEngine:
@@ -27,6 +28,9 @@ custom:
     - bucketName: bookshelf-nuxt
       localDir: .output/public
       deleteRemoved: true
+  scripts:
+    hooks:
+      "before:deploy:deploy": npm run build
 
 resources:
   Resources:
