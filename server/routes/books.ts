@@ -7,6 +7,16 @@ bookRoutes.get("/", async (req: Request, res: Response) => {
   return res.send(await BookModel.scan().exec());
 });
 
+bookRoutes.get("/test", async (req: Request, res: Response) => {
+  await BookModel.create({
+    id: Date.now() + "test",
+    title: "test",
+    author: "test author",
+  });
+
+  res.send("Created");
+});
+
 bookRoutes.get("/:id", async (req: Request, res: Response) => {
   const book = await BookModel.get(req.params.id);
   if (book) {
@@ -29,14 +39,4 @@ bookRoutes.delete("/:id", async (req: Request, res: Response) => {
   } else {
     return res.status(404).json({ error: "Error: book not found" });
   }
-});
-
-bookRoutes.get("/test", async (req: Request, res: Response) => {
-  await BookModel.create({
-    id: Date.now() + "test",
-    title: "test",
-    author: "test author",
-  });
-
-  res.send("Created");
 });

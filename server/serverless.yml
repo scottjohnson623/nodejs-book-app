@@ -43,6 +43,9 @@ custom:
   dynamodb:
     stages:
       - dev
+    start:
+      port: 3004
+      migrate: true
 
 resources:
   Resources:

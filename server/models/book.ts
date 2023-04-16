@@ -10,7 +10,6 @@ class Book extends Item {
   comments: string[];
   bookFinishedDate: string | null;
 }
-
 const bookSchema = new Schema(
   {
     id: {
