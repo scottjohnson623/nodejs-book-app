@@ -7,18 +7,22 @@ provider:
   stage: dev
   region: ap-northeast-1
   environment:
-    API_BASE_URL:
-      {
-        "Fn::Join":
-          [
-            "",
-            [
-              "https://",
-              { "Ref": "ApiGatewayRestApi" },
-              ".execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}",
-            ],
-          ],
-      }
+    booksTableName: 
+      Ref: booksTable
+    
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:DescribeTable
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: !GetAtt booksTable.Arn
 
 plugins:
   - serverless-esbuild
@@ -45,18 +49,18 @@ custom:
   dynamodb:
     stages:
       - dev
-
+    
 resources:
-  Resources:
-    usersTable:
+  Resources: 
+    booksTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: booksTable
+        TableName: books
         AttributeDefinitions:
-          - AttributeName: titleTimestamp
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          - AttributeName: titleTimestamp
+          - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
 
