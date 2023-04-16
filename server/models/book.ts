@@ -1,5 +1,5 @@
 import dynamoose from 'dynamoose'
-import { TableNames } from '../enums/tableNames'
+import TableNames from '../config/tableNames'
 const { Schema } = dynamoose
 import { Item } from "dynamoose/dist/Item";
 

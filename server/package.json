@@ -8,6 +8,8 @@
     "serverless-offline": "^12.0.4"
   },
   "dependencies": {
+    "@googleapis/books": "^1.0.0",
+    "dotenv": "^16.0.3",
     "dynamoose": "^3.1.0",
     "express": "^4.18.2",
     "serverless-dynamodb-local": "^0.2.40"

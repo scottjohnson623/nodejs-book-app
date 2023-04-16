@@ -9,19 +9,12 @@ provider:
   environment:
     booksTableName: 
       Ref: booksTable
-    
   iam:
     role:
       statements:
         - Effect: Allow
           Action:
-            - dynamodb:DescribeTable
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
+            - dynamodb:*
           Resource: !GetAtt booksTable.Arn
 
 plugins:
@@ -32,9 +25,10 @@ plugins:
 package:
   individually: true
   patterns:
-    - "!**"
-    - "**"
-    - "node_modules/**"
+    - '!**'
+    - '**'
+    - '!node_modules/**'
+  excludeDevDependencies: true
 
 functions:
   Api:

@@ -11,8 +11,9 @@ provider:
 
 package:
   patterns:
-    - "!**"
-    - ".output/**"
+    - '!**'
+    - '.output/**'
+  excludeDevDependencies: true
 
 functions:
   NuxtSsrEngine:
