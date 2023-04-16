@@ -1,5 +1,5 @@
 service: bookshelf-api
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws
@@ -7,26 +7,30 @@ provider:
   stage: dev
   region: ap-northeast-1
   environment:
-    API_BASE_URL: { 'Fn::Join': [
-      '', [
-        'https://',
-        {'Ref': 'ApiGatewayRestApi' },
-        '.execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}'
-      ]
-    ]}
+    API_BASE_URL:
+      {
+        "Fn::Join":
+          [
+            "",
+            [
+              "https://",
+              { "Ref": "ApiGatewayRestApi" },
+              ".execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}",
+            ],
+          ],
+      }
 
 plugins:
   - serverless-esbuild
   - serverless-dynamodb-local
   - serverless-offline
 
-
 package:
   individually: true
   patterns:
-    - '!**'
-    - '**'
-    - 'node_modules/**'
+    - "!**"
+    - "**"
+    - "node_modules/**"
 
 functions:
   Api:
@@ -41,11 +45,9 @@ custom:
   dynamodb:
     stages:
       - dev
-    
-
 
 resources:
-  Resources: 
+  Resources:
     usersTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -60,10 +62,15 @@ resources:
 
   Outputs:
     apiBaseUrl:
-      Value: { 'Fn::Join': [
-        '', [
-          'https://',
-          {'Ref': 'ApiGatewayRestApi' },
-          '.execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}'
-        ]
-      ]}
+      Value:
+        {
+          "Fn::Join":
+            [
+              "",
+              [
+                "https://",
+                { "Ref": "ApiGatewayRestApi" },
+                ".execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}",
+              ],
+            ],
+        }

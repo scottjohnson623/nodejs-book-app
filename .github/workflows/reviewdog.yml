@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write 
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
       - uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review # Change reporter.
-          eslint_flags: '. --ext .ts'
+          eslint_flags: ". --ext .ts"

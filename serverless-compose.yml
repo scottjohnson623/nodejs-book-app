@@ -3,5 +3,5 @@ services:
     path: server
   client:
     path: client
-    params: 
+    params:
       apiBaseUrl: ${server.apiBaseUrl}
