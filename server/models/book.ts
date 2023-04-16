@@ -30,7 +30,7 @@ const bookSchema = new Schema(
       required: false,
     },
     bookFinishedDate: {
-      type: [String],
+      type: String,
       required: false,
     },
   },
