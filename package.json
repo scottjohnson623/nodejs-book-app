@@ -1,7 +1,8 @@
 {
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "lintfix": "eslint . --ext .ts --fix && prettier --write ."
+    "lintfix": "eslint . --ext .ts --fix && prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "serverless": "^3.30.1"
@@ -12,6 +13,7 @@
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "eslint": "^8.38.0",
+    "husky": "^8.0.3",
     "prettier": "2.8.7"
   }
 }
