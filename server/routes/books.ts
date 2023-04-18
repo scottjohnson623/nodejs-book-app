@@ -1,42 +1,19 @@
 import { Router } from "express";
-import { Request, Response } from "express";
-import { BookModel } from "../models/book";
+import {
+  createBook,
+  deleteBookById,
+  getAllBooks,
+  getBookById,
+  testCreateEndpoint,
+} from "../controllers/book.controller";
 export const bookRoutes: Router = Router();
 
-bookRoutes.get("/", async (req: Request, res: Response) => {
-  return res.send(await BookModel.scan().exec());
-});
+bookRoutes.get("/", getAllBooks);
 
-bookRoutes.get("/test", async (req: Request, res: Response) => {
-  await BookModel.create({
-    id: Date.now() + "test",
-    title: "test",
-    author: "test author",
-  });
+bookRoutes.get("/test", testCreateEndpoint);
 
-  res.send("Created");
-});
+bookRoutes.get("/:id", getBookById);
 
-bookRoutes.get("/:id", async (req: Request, res: Response) => {
-  const book = await BookModel.get(req.params.id);
-  if (book) {
-    return res.status(200).json(book);
-  } else {
-    return res.status(404).json({ error: "Error: book not found" });
-  }
-});
+bookRoutes.delete("/:id", deleteBookById);
 
-bookRoutes.delete("/:id", async (req: Request, res: Response) => {
-  const book = await BookModel.get(req.params.id);
-  if (book) {
-    try {
-      await book.delete();
-
-      return res.status(204).send();
-    } catch (error) {
-      return res.status(500).send({ error });
-    }
-  } else {
-    return res.status(404).json({ error: "Error: book not found" });
-  }
-});
+bookRoutes.post("/", createBook);

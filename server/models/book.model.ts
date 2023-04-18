@@ -3,7 +3,7 @@ import TableNames from "../config/tableNames";
 const { Schema } = dynamoose;
 import { Item } from "dynamoose/dist/Item";
 
-class Book extends Item {
+export class Book extends Item {
   id: string;
   title: string;
   author: string;

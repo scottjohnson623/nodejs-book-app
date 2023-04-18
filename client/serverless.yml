@@ -6,8 +6,6 @@ provider:
   runtime: nodejs16.x
   stage: dev
   region: ap-northeast-1
-  environment:
-    API_BASE_URL: ${param:apiBaseUrl}
 
 package:
   patterns:
@@ -22,6 +20,7 @@ functions:
 
 plugins:
   - serverless-s3-sync
+  - serverless-plugin-scripts
 
 custom:
   s3Sync:
@@ -30,7 +29,7 @@ custom:
       deleteRemoved: true
   scripts:
     hooks:
-      "before:deploy:deploy": npm run build
+      "before:deploy:deploy": API_BASE_URL=${param:apiBaseUrl} npm run build
 
 resources:
   Resources:
