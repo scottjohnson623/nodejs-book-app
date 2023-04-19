@@ -13,6 +13,8 @@ if (process.env.IS_OFFLINE) {
 
 const app: Express = express();
 
+app.use(express.json());
+
 app.use("/api", apiRoutes);
 
 app.get("*", (req: Request, res: Response) => {
