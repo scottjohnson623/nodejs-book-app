@@ -1,4 +1,4 @@
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL + '/api';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL + "/api";
 
 export default {
   GET_ALL_BOOKS: `${apiBaseUrl}/books`,

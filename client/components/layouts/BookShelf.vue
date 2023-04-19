@@ -14,11 +14,23 @@ const deleteBook = async (book) => {
 
 <template>
   <div class="w-50">
-    <v-btn class="mr-0 float-right" v-if="!doShowAddBookForm" @click="doShowAddBookForm = true" :ripple="false">
+    <v-btn
+      class="mr-0 float-right"
+      v-if="!doShowAddBookForm"
+      @click="doShowAddBookForm = true"
+      :ripple="false"
+    >
       <v-icon icon="mdi-plus" />
       Add a new Book
     </v-btn>
-    <v-btn v-else class="mr-0 float-right" density="compact" icon="mdi-close" @click="doShowAddBookForm = false" :ripple="false"/>
+    <v-btn
+      v-else
+      class="mr-0 float-right"
+      density="compact"
+      icon="mdi-close"
+      @click="doShowAddBookForm = false"
+      :ripple="false"
+    />
   </div>
 
   <forms-add-book-form v-if="doShowAddBookForm" @on-book-added="refreshBooks" />

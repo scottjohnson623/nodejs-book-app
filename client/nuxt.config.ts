@@ -25,11 +25,12 @@ export default defineNuxtConfig({
           charset: "utf-8",
         },
       ],
-      link: [    {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300',
-      }
-  ],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300",
+        },
+      ],
       style: [],
       script: [],
       noscript: [],

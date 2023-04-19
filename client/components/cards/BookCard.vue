@@ -34,11 +34,9 @@ const deleteBook = () => {
       Finished reading on {{ bookFinishedDate }}</v-card-text
     >
     <v-card-actions>
-      <v-btn
-        class="ms-2"
-        variant="outlined"
-        @click="doShowDeleteModal = true"
-      > <v-icon icon="mdi-delete" /> Delete </v-btn>
+      <v-btn class="ms-2" variant="outlined" @click="doShowDeleteModal = true">
+        <v-icon icon="mdi-delete" /> Delete
+      </v-btn>
     </v-card-actions>
   </v-card>
   <v-dialog v-model="doShowDeleteModal" width="50%">
