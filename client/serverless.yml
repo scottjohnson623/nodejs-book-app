@@ -6,6 +6,8 @@ provider:
   runtime: nodejs16.x
   stage: dev
   region: ap-northeast-1
+  environment:
+    VITE_API_BASE_URL: ${param:apiBaseUrl}
 
 package:
   patterns:
@@ -29,7 +31,7 @@ custom:
       deleteRemoved: true
   scripts:
     hooks:
-      "before:deploy:deploy": API_BASE_URL=${param:apiBaseUrl} npm run build
+      "before:deploy:deploy": VITE_API_BASE_URL=${param:apiBaseUrl} npm run build
 
 resources:
   Resources:

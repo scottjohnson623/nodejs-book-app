@@ -35,6 +35,7 @@ functions:
     handler: server.handler
     events:
       - http: ANY api/{proxy+}
+    cors: true
 
 custom:
   esbuild:

@@ -1,28 +1,36 @@
-<template>
-  <v-app id="inspire">
-    <v-navigation-drawer model-value class="pt-4" color="grey-lighten-3" rail>
-      <v-avatar
-        v-for="n in 6"
-        :key="n"
-        :color="`grey-${n === 1 ? 'darken' : 'lighten'}-1`"
-        :size="n === 1 ? 36 : 20"
-        class="d-block text-center mx-auto mb-9"
-      ></v-avatar>
-    </v-navigation-drawer>
+<script setup>
+useHead({
+  title: "My Bookshelf",
+  meta: [
+    {
+      name: "My Bookshelf",
+      description: "A site to catalog books I have read",
+    },
+  ],
+});
+</script>
 
-    <v-main>
-      <img
-        src="~/public/IMG_6530.jpg"
-        width="400"
-        height="400"
-        class="text-center"
-      />
-    </v-main>
-  </v-app>
+<template>
+  <div>
+    <v-app id="inspire">
+      <v-app-bar id="app-header">
+        <h1 class="text-center w-100">My Bookshelf</h1>
+      </v-app-bar>
+      <v-main id="main-area" class="mt-5 d-flex align-center flex-column">
+        <layouts-book-shelf />
+      </v-main>
+    </v-app>
+  </div>
 </template>
 
-<script>
-export default {
-  //
-};
-</script>
+<style scoped>
+#app-header {
+  background-color: bisque;
+}
+#main-area {
+  background-color: #faf9f6;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+</style>
