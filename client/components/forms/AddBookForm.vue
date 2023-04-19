@@ -10,11 +10,31 @@ const initialFormData = {
   bookFinishedDate: null,
   comments: [],
 };
+
+const isValidBookFinishedDate = (value) => {
+  console.log(value);
+  console.log(
+    new RegExp(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/).test(
+      JSON.stringify(value)
+    )
+  );
+  return (
+    !value ||
+    new RegExp(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/).test(value)
+  );
+};
 const formData = reactive({ ...initialFormData });
 
 const formRules = {
   title: [(value) => (value ? true : "You must enter a title")],
   author: [(value) => (value ? true : "You must enter a author")],
+  bookFinishedDate: [
+    (value) => {
+      return isValidBookFinishedDate(value)
+        ? true
+        : "Invalid date format. Please doublecheck the date format is YYYY-MM-DD and try again.";
+    },
+  ],
 };
 
 const resetForm = () => Object.assign(formData, initialFormData);
@@ -25,7 +45,11 @@ const populateBookDetails = (book) => {
 };
 
 const addBook = async () => {
-  if (!formData.title || !formData.author) {
+  if (
+    !formData.title ||
+    !formData.author ||
+    !isValidBookFinishedDate(formData.bookFinishedDate)
+  ) {
     return;
   }
   isSubmitting.value = true;
@@ -57,6 +81,7 @@ const addBook = async () => {
     <v-text-field
       v-model="formData.bookFinishedDate"
       label="Date Finished"
+      :rules="formRules.bookFinishedDate"
       hint="Date you finished reading the book in YYYY-MM-DD format(optional)"
       persistent-hint
     />

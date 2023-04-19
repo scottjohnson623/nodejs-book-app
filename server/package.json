@@ -16,7 +16,6 @@
     "ts-jest": "^29.1.0"
   },
   "dependencies": {
-    "@googleapis/books": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "dynamoose": "^3.1.0",
