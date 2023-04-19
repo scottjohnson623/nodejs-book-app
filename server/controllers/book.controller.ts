@@ -11,7 +11,6 @@ export const createBook: RequestHandler = async (
   res: Response
 ) => {
   try {
-    console.log(req.body);
     const book = await CreateBook.make(req.body).execute();
 
     return res.status(201).json(book);
@@ -42,7 +41,10 @@ export const getAllBooks: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
-  const books = BookModel.serializeMany(await GetAllBooks.make().execute(), 'bookSerializer');
+  const books = BookModel.serializeMany(
+    await GetAllBooks.make().execute(),
+    "bookSerializer"
+  );
 
   return res.status(200).json(books);
 };
@@ -75,5 +77,5 @@ export const testCreateEndpoint: RequestHandler = async (
     title: "test",
     author: "test author",
   }).execute();
-  return res.status(204).json({message: "Created"});
+  return res.status(204).json({ message: "Created" });
 };
