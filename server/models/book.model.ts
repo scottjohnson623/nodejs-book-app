@@ -9,7 +9,7 @@ export class Book extends Item {
   title: string;
   author: string;
   comments?: string[];
-  bookFinishedDate?: string;
+  bookFinishedDate?: Date;
 }
 const bookSchema = new Schema(
   {
@@ -64,7 +64,9 @@ export const BookModel = dynamoose.model<Book>(TableNames.BOOKS, bookSchema);
 BookModel.serializer.add("bookSerializer", {
   modify: (serialized, original) => ({
     ...serialized,
-    bookFinishedDate: new Date(original.bookFinishedDate).toUTCString(),
+    bookFinishedDate: original.bookFinishedDate
+      ? new Date(original.bookFinishedDate).toLocaleDateString()
+      : null,
   }),
 });
 
