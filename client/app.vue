@@ -4,12 +4,14 @@ console.log(apiBase);
 const { data: books } = await useFetch(apiBase + "books");
 
 useHead({
-  title: 'My Bookshelf',
-  meta: [{
-    name: 'My Bookshelf',
-    description: 'A site to catalog books I have read',
-  }]
-})
+  title: "My Bookshelf",
+  meta: [
+    {
+      name: "My Bookshelf",
+      description: "A site to catalog books I have read",
+    },
+  ],
+});
 </script>
 
 <template>
