@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE_URL || "/api",
+      apiBaseUrl: process.env.API_BASE_URL || "/api",
     },
   },
   app: {
@@ -25,7 +25,11 @@ export default defineNuxtConfig({
           charset: "utf-8",
         },
       ],
-      link: [],
+      link: [    {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300',
+      }
+  ],
       style: [],
       script: [],
       noscript: [],
