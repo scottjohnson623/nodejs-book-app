@@ -1,9 +1,11 @@
 <script setup>
 defineProps(["props", "value"]);
+
 const emit = defineEmits(["onBookFound"]);
 const isbnNumber = ref(null);
 const errors = ref([]);
 const isSearching = ref(false);
+
 const searchForBook = async () => {
   isSearching.value = true;
   errors.value = [];
