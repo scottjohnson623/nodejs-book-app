@@ -5,7 +5,7 @@ interface CreateBookObject {
   title: string;
   author: string;
   comments?: string[];
-  bookFinishedDate?: string;
+  bookFinishedDate?: Date;
 }
 
 export class CreateBook {
@@ -22,6 +22,11 @@ export class CreateBook {
   execute(): Promise<Book> {
     if (!this._data.id) {
       this._data.id = Date.now() + this._data.title;
+    }
+    if (this._data.bookFinishedDate) {
+      this._data.bookFinishedDate = new Date(this._data.bookFinishedDate);
+    } else {
+      delete this._data.bookFinishedDate;
     }
     if (!this._data.comments) {
       this._data.comments = [];

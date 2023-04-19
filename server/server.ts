@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { Express, Request, Response } from "express";
 import { apiRoutes } from "./routes/api";
 import serverless, { Handler } from "serverless-http";
@@ -14,6 +15,7 @@ if (process.env.IS_OFFLINE) {
 const app: Express = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api", apiRoutes);
 
