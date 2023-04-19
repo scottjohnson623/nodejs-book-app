@@ -1,35 +1,31 @@
 import { Book, BookModel } from "../../models/book.model";
-import Validator from "validatorjs";
+
+interface CreateBookObject {
+  id?: string;
+  title: string;
+  author: string;
+  comments?: string[];
+  bookFinishedDate?: string;
+}
 
 export class CreateBook {
-  _data: object;
+  _data: CreateBookObject;
 
-  constructor(data: object) {
+  constructor(data: CreateBookObject) {
     this._data = data;
   }
 
-  static make(data: object): CreateBook {
+  static make(data: CreateBookObject): CreateBook {
     return new CreateBook(data);
   }
 
   execute(): Promise<Book> {
-    const rules: object = {
-      author: "required|string",
-      title: "required|string",
-      bookFinishedDate: "date",
-      comments: "array",
-    };
-
-    const validation: Validator = new Validator(this._data, rules);
-
-    if (validation.passes()) {
-      return BookModel.create({
-        id: Date.now() + this._data.title,
-        ...this._data,
-      });
-    } else {
-      //TODO: pass through failed validation errors
-      throw new Error("Error creating a book- Object does not pass validation");
+    if (!this._data.id) {
+      this._data.id = Date.now() + this._data.title;
     }
+    if (!this._data.comments) {
+      this._data.comments = [];
+    }
+    return BookModel.create(this._data);
   }
 }

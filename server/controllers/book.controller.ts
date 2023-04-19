@@ -4,12 +4,14 @@ import { CreateBook } from "../actions/books/createBook";
 import { DeleteBook } from "../actions/books/deleteBook";
 import { GetAllBooks } from "../actions/books/getAllBooks";
 import { GetBookById } from "../actions/books/getBookById";
+import { BookModel } from "../models/book.model";
 
 export const createBook: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
   try {
+    console.log(req.body);
     const book = await CreateBook.make(req.body).execute();
 
     return res.status(201).json(book);
@@ -40,7 +42,7 @@ export const getAllBooks: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
-  const books = await GetAllBooks.make().execute();
+  const books = BookModel.serializeMany(await GetAllBooks.make().execute(), 'bookSerializer');
 
   return res.status(200).json(books);
 };
@@ -73,5 +75,5 @@ export const testCreateEndpoint: RequestHandler = async (
     title: "test",
     author: "test author",
   }).execute();
-  res.status(204).send("Created");
+  return res.status(204).json({message: "Created"});
 };
