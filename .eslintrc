@@ -18,15 +18,13 @@
       "typescript": {
         "project": [
           "tsconfig.json",
-          "server/tsconfig.json",
-          "client/tsconfig.json"
+          "server/tsconfig.json"
         ]
       },
       "node": {
         "project": [
           "tsconfig.json",
-          "server/tsconfig.json",
-          "client/tsconfig.json"
+          "server/tsconfig.json"
         ]
       }
     }
