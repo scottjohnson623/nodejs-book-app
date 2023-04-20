@@ -1,4 +1,4 @@
-name: reviewdog
+name: tests
 on: [pull_request]
 jobs:
   build:
