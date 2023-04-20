@@ -17,7 +17,7 @@ jobs:
           sharedDb: # undefined by default
           delayTransientStatuses: # undefined by default
           optimizeDbBeforeStartup: # undefined by default
-          port: 8000
+          port: 3004
           cors: "*"
       - name: Checkout repo
         uses: actions/checkout@v3
