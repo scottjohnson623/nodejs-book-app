@@ -9,7 +9,7 @@ jobs:
       - name: Install modules
         run: cd server && npm i
       - name: Run tests
-        run: cd server ** npm run test --runInBand
+        run: cd server && npm run test --runInBand
     services:
       dynamodb:
         image: amazon/dynamodb-local:latest
