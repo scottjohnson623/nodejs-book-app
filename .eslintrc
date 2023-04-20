@@ -10,18 +10,25 @@
     "plugin:vue/vue3-recommended",
     "@nuxt/eslint-config"
   ],
-"settings": {
-  "import/parsers": {
-    "@typescript-eslint/parser": [".ts", ".tsx"]
-  },
-  "import/resolver": {
-    "typescript": {
-      "project": ["tsconfig.json", "server/tsconfig.json", "client/tsconfig.json"]
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
     },
-    "node": {
-      "project": ["tsconfig.json", "server/tsconfig.json", "client/tsconfig.json"]
+    "import/resolver": {
+      "typescript": {
+        "project": [
+          "tsconfig.json",
+          "server/tsconfig.json",
+          "client/tsconfig.json"
+        ]
+      },
+      "node": {
+        "project": [
+          "tsconfig.json",
+          "server/tsconfig.json",
+          "client/tsconfig.json"
+        ]
+      }
     }
   }
-}
-
 }
