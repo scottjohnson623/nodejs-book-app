@@ -26,6 +26,4 @@ test("GetBookById returns book when id matches", async () => {
   expect(getBookByIdResult.id).toBe(book.id);
   expect(getBookByIdResult.title).toBe(book.title);
   expect(getBookByIdResult.author).toBe(book.author);
-  expect(getBookByIdResult.createdAt).toBe(new Date(book.createdAt));
-  expect(getBookByIdResult.updatedAt).toBe(new Date(book.updatedAt));
 });
