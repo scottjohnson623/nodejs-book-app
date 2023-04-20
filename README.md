@@ -98,6 +98,8 @@ With this, your two servers should be up and running and you should be able to s
 As this is an MVP, there is a lot I would like to add to bring this to a more polished state. This includes:
 
 - Better test coverage
+- Better testing implementation, including factories for models.
+- Better setup of database for testing purposes, including using DB transactions (Will be easier once moved away from dynamoDB)
 - Implementing validator.js a little more thoroughly, and returning errors on model creation
 - Adding validator middleware to post endpoints to validate the request has the necessary contents before allowing it through to the controller
 - Migrating from DynamoDB to a relational database (DynamoDB was chosen due to the extra resources that would have been needed to be provisioned to use RDS)

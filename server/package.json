@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "serverless offline start",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
