@@ -1,6 +1,6 @@
 import { Book, BookModel } from "../../models/book.model";
 
-interface CreateBookObject {
+export interface CreateBookObject {
   id?: string;
   title: string;
   author: string;

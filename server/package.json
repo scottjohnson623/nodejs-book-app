@@ -1,11 +1,14 @@
 {
   "scripts": {
-    "dev": "serverless offline start --noPrependStageInUrl"
+    "dev": "serverless offline start",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@jest/globals": "^29.5.0",
     "@shelf/jest-dynamodb": "^3.4.1",
     "@types/express": "^4.17.17",
-    "@types/jest": "^29.5.0",
+    "@types/jest": "^29.5.1",
     "@types/validator": "^13.7.15",
     "esbuild": "^0.14.25",
     "jest": "^29.5.0",

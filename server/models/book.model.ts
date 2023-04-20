@@ -1,6 +1,5 @@
-import dynamoose from "dynamoose";
+import * as dynamoose from "dynamoose";
 import TableNames from "../config/tableNames";
-const { Schema } = dynamoose;
 import { Item } from "dynamoose/dist/Item";
 import Validator from "validatorjs";
 
@@ -11,7 +10,7 @@ export class Book extends Item {
   comments?: string[];
   bookFinishedDate?: Date;
 }
-const bookSchema = new Schema(
+const bookSchema = new dynamoose.Schema(
   {
     id: {
       type: String,

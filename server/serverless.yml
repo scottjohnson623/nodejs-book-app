@@ -28,6 +28,7 @@ package:
     - "!**"
     - "**"
     - "!node_modules/**"
+    - "!**/*.test.ts"
   excludeDevDependencies: true
 
 functions:
