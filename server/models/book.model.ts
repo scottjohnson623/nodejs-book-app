@@ -9,8 +9,8 @@ export class Book extends Item {
   author: string;
   comments?: string[];
   bookFinishedDate?: Date;
-  createdAt?: Date|number;
-  updatedAt?: Date|number;
+  createdAt?: Date | number;
+  updatedAt?: Date | number;
 }
 const bookSchema = new dynamoose.Schema(
   {

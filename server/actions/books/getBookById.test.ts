@@ -22,11 +22,10 @@ test("GetBookById returns book when id matches", async () => {
   const book = await CreateBook.make(createBookObject).execute();
 
   const getBookByIdResult = await GetBookById.make(book.id).execute();
-  
+
   expect(getBookByIdResult.id).toBe(book.id);
   expect(getBookByIdResult.title).toBe(book.title);
   expect(getBookByIdResult.author).toBe(book.author);
-  expect(new Date(getBookByIdResult.createdAt)).toBe(new Date(book.createdAt))
-  expect(new Date(getBookByIdResult.updatedAt)).toBe(new Date(book.updatedAt))
+  expect(new Date(getBookByIdResult.createdAt)).toBe(new Date(book.createdAt));
+  expect(new Date(getBookByIdResult.updatedAt)).toBe(new Date(book.updatedAt));
 });
-
